@@ -86,17 +86,14 @@
           style="background-image: url('./assets/images/contact-bg.png')"
         >
           <div class="container">
-            <form action="" class="contact-form">
+            <form id="contact-form" class="contact-form">
               <h2 class="headline-sm" id="contact-label">Hubungi Saya</h2>
-
               <p class="contact-text body-md">
                 Saya sangat Berkenan jika anda dapat memakai Jasa saya 🤗
               </p>
-
               <div class="wrapper">
                 <div>
                   <label for="name" class="label">Nama</label>
-
                   <input
                     type="text"
                     name="name"
@@ -106,10 +103,8 @@
                     class="input-field"
                   />
                 </div>
-
                 <div>
-                  <label for="email" class="label">Email </label>
-
+                  <label for="email" class="label">Email</label>
                   <input
                     type="email"
                     name="email"
@@ -120,7 +115,6 @@
                   />
                 </div>
               </div>
-
               <label for="subject" class="label">Subject</label>
               <input
                 type="text"
@@ -129,8 +123,7 @@
                 placeholder="Subject *"
                 class="input-field"
               />
-
-              <label for="message" class="label">Pesan Mu </label>
+              <label for="message" class="label">Pesan Mu</label>
               <textarea
                 name="message"
                 id="message"
@@ -138,8 +131,9 @@
                 required
                 class="input-field"
               ></textarea>
-
-              <a href="#" class="btn btn-tertiary">Kirim Pesan</a>
+              <button type="submit" class="btn btn-tertiary">
+                Kirim Pesan
+              </button>
             </form>
 
             <div class="contact-content">
@@ -212,6 +206,30 @@
     </footer>
 
     <script src="./assets/js/script.js"></script>
+
+    <script>
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Mencegah pengiriman formulir default
+
+          // Ambil nilai-nilai dari formulir
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const subject = document.getElementById("subject").value;
+          const message = document.getElementById("message").value;
+
+          // Buat URL untuk membuka Gmail dengan data formulir
+          const mailtoLink = `mailto:mulyaghilbran@gmail.com?subject=${encodeURIComponent(
+            subject
+          )}&body=${encodeURIComponent(
+            `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+          )}`;
+
+          // Arahkan pengguna ke URL mailto
+          window.location.href = mailtoLink;
+        });
+    </script>
 
     <script
       type="module"
